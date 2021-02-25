@@ -18,6 +18,7 @@ use App\Http\Controllers\todoController;
 //     return view('welcome');
 // });
 
-Route::get('/', [todoController::class,'index'])->name('/');
+Route::get('/', [todoController::class, 'index'])->name('/');
 
-Route::post("/",[todoController::class,'create']);
+Route::post("/", [todoController::class, 'create']);
+Route::get("/{id}", [todoController::class, 'destroy']);

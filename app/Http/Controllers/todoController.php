@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Todo;
@@ -18,7 +19,7 @@ class todoController extends Controller
         // if(!\Request::acceptsJson()){
         //     return view('home');
         // }else if(\Request::acceptsHtml()){
-            return view('home',['data'=>Todo::all()]);
+        return view('home', ['data' => Todo::all()]);
         // }
     }
 
@@ -30,7 +31,7 @@ class todoController extends Controller
     public function create(Request $request)
     {
         $todo = new Todo();
-        $todo->todo=$request->todo;
+        $todo->todo = $request->todo;
         $result = $todo->save();
         return redirect()->route('/');
     }
@@ -88,6 +89,7 @@ class todoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Todo::find($id)->delete();
+        return redirect()->route('/');
     }
 }
